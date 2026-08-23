@@ -1,0 +1,20 @@
+{
+  "name": "polleria-system",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "build": "pnpm --recursive --if-present build",
+    "dev": "pnpm --parallel --filter @polleria/api --filter @polleria/web dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "pnpm --recursive --if-present lint",
+    "test": "pnpm --recursive --if-present test",
+    "typecheck": "pnpm --recursive --if-present typecheck",
+    "db:generate": "pnpm --filter @polleria/api prisma:generate",
+    "db:push": "pnpm --filter @polleria/api prisma:push"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

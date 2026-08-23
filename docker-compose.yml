@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: polleria-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: polleria
+      POSTGRES_USER: polleria
+      POSTGRES_PASSWORD: polleria
+    ports:
+      - '${POSTGRES_PORT:-5433}:5432'
+    volumes:
+      - polleria-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U polleria -d polleria']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  polleria-postgres-data:
